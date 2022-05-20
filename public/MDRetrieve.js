@@ -1,3 +1,14 @@
+let mangaCover = ""
+let mangaAuthor = ""
+let mangaArtist = ""
+let mangaDescription = ""
+let mangaTitle = ""
+
+let mangaCoverArray = []
+let mangaAuthorArray = []
+let mangaArtistArray = []
+
+
 
 let login = {}
 document.addEventListener("submit", (event) => { 
@@ -17,7 +28,7 @@ const getRequest = {
 let loginData = {}
 let sessionToken = ""
 let mangaID = []
-let numberOfManga = 100
+let numberOfManga = 2
 
 
 
@@ -37,15 +48,8 @@ return mangaID })
 mangaID.forEach(retrieveMangaInfo)
   }
     
-let mangaCover = ""
-let mangaAuthor = ""
-let mangaArtist = ""
 
-let mangaCoverArray = []
-let mangaAuthorArray = []
-let mangaArtistArray = []
-
-// GET Author, Artist, and manga Cover
+// GET manga info
 function retrieveMangaInfo(mangaID){
   fetch(`https://api.mangadex.org/manga/${mangaID}?includes[]=author&includes[]=artist&includes[]=cover_art`)
 .then(resp => resp.json())
@@ -53,29 +57,53 @@ function retrieveMangaInfo(mangaID){
 mangaAuthorArray.push(result.data.relationships[0].attributes.name)
 mangaArtistArray.push(result.data.relationships[1].attributes.name)
 mangaCoverArray.push(`https://uploads.mangadex.org/covers/${mangaID}/${result.data.relationships[2].attributes.fileName}`)
+mangaArtist = result.data.relationships[1].attributes.name
+mangaAuthor = result.data.relationships[0].attributes.name
 mangaCover = `https://uploads.mangadex.org/covers/${mangaID}/${result.data.relationships[2].attributes.fileName}`
-appendMangaInfo(mangaAuthor, mangaArtist, mangaCover)
-return mangaAuthor, mangaArtist, mangaCover, result
+mangaDescription = result.data.attributes.description.en
+mangaTitle= result.data.attributes.title.en
+appendMangaInfo(mangaAuthor, mangaArtist, mangaCover, mangaDescription,mangaTitle)
+return mangaAuthor, mangaArtist, mangaCover, result, mangaDescription, mangaTitle
 })
 .catch(error => console.log('error retrieving manga Author, and artist', error))
 }
 
 // append manga info
-function appendMangaInfo(mangaAuthor, mangaArtist, mangaCover){
+function appendMangaInfo(mangaAuthor, mangaArtist, mangaCover,mangaDescription,mangaTitle){
   // appending manga info
 let cardImg = document.getElementById("cardImport")
 let cardText = document.getElementsByClassName("card-body")
+
+
 let hTitle = document.createElement("h5")
-let pDiscription = document.createElement("p")
+hTitle.classList.add("card-title")
+hTitle.innerHTML = mangaTitle
+console.log(hTitle)
+cardText[0].appendChild(hTitle)
 
 let coverImg = document.createElement("img")
 coverImg.classList.add("img-fluid","rounded-start")
 coverImg.src = mangaCover
 cardImg.appendChild(coverImg)
 
-hTitle.innerHTML = mangaAuthor
-pDiscription.innerHTML = mangaArtist
+let pDescription = document.createElement("p")
+pDescription.classList.add("card-text")
+if (mangaDescription !== ""){
+pDescription.innerText = mangaDescription
+cardText[0].appendChild(pDescription)
+} else {
+  pDescription.innerText = "No Desciption"
+cardText[0].appendChild(pDescription)
+console.log(card)
 }
+
+let lastUpdate = document.createElement("p")
+lastUpdate.classList.add("text-muted")
+console.log(lastUpdate)
+lastUpdate.innerHTML = "filler Text"
+cardText[0].appendChild(lastUpdate)
+}
+
 
 // get all manga covers
 //
