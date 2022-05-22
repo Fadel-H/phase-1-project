@@ -8,7 +8,9 @@ phase-1-project
 
 username: TestAccountforProject     |||       password: 123ABCDEF
 
-## The screen will then load the current follow manga for the account provided with some details such as manga title, author, artist, description, and a quick link to take you to the manga page on MangaDex.org website.
+## If you get a popup error saying incorrected login, open up the inspect tool for the webpage, and see which error code you are getting. If you get a 400 code error, the means that you have entered an incorrect login info. If you get a 401 error that mean that your server wasn't setup correctly, and that you need to make sure that it's running properly.
+
+## Once you are able to login, the screen will load the current follow manga for the account provided with some details such as manga title, author, artist, description, and a quick link to take you to the manga page on MangaDex.org website.
 
 ## On the top part of the screen, you will see a navigation bar with three bottons, the first one is the logout button which logs the user off, and takes them back to the login screen. The second button is the mangaList button which when clicked generates a list of 100 manga that was accessed from the MangaDex.org website. The third and final button is the userManga button which when clicked shows the manga follow list of the user.
 
