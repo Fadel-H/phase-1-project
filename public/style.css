@@ -1,4 +1,13 @@
-.textPadding{
-    padding-bottom: 50px
-
-}
+#hiddenText {
+    border-radius: 10px;
+    background-color: maroon;
+    color: white;
+  
+    margin: 1em;
+    padding: 1em;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
