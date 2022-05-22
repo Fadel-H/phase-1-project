@@ -1,4 +1,4 @@
-##phase-1-project
+phase-1-project
 
 ## This project uses the free mangaDex API to access the users manga follow list, and public manga list, and displays them as a list.
 
