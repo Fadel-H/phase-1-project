@@ -2,7 +2,7 @@ phase-1-project
 
 ## This project uses the free mangaDex API https://api.mangadex.org/docs/ to access the users manga follow list, public manga list, and displays them as a list.
 
-## To use tihs project, you would need to run the server.js file with the npm start command on your terminal. Then go to https://localhost:3000 on your web brower.
+## To use this project, you would need to run the server.js file with the npm start command on your terminal. Then go to https://localhost:3000 on your web brower.
 
 ## once you're in, you will see a login screen in which you can either use your MangaDex.org account, or use the test account I created below:
 
